@@ -15,7 +15,7 @@ void Game::Snake(Game game)
 	//gameplay window
 	sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works... for now...");
 
-#pragma region To calculate deltaTime because SFML doesn't have it build-in :P
+#pragma region To_calculate_deltaTime_because_SFML_doesnt_have_it_build-in
 
 	sf::Time time = {};
 	sf::Clock clock = {};
