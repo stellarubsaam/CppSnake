@@ -12,32 +12,42 @@ Game::~Game()
 
 void Game::Snake(Game game)
 {
+	//gameplay window
 	sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works... for now...");
+
+#pragma region To calculate deltaTime because SFML doesn't have it build-in :P
 
 	sf::Time time = {};
 	sf::Clock clock = {};
 	float lastTime = 0.0f;
 	float currTime = 0.0f;
 
+#pragma endregion
+
+	//speed of the player
 	int playerSpeed = 150;
 
+	//sets the size of the player in pixels
 	player.setSizePlayer(25);
 
+	//set's the amount of items on the field
 	for (int i = 0; i < 1; i++)
 	{
 		item.push_back(Item());
 	}
 
+	//Update function - global
 	while (window.isOpen())
 	{
+		//delta time calculation
 		time = clock.getElapsedTime();
 		currTime = clock.getElapsedTime().asSeconds();
-		
 		deltaTime = currTime - lastTime;
 
+		//delta time implementation, forces the game to run at 60fps
 		if (currTime - lastTime >= 1.0f / 60.0f)
 		{
-			
+			//Update function - Is only executed on mouse/keyboard input
 			sf::Event event;
 			while (window.pollEvent(event))
 			{
@@ -45,19 +55,9 @@ void Game::Snake(Game game)
 				{
 					window.close();
 				}
-				/*
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-				{
-
-				}
-
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
-				{
-				}
-				*/
-
 			}
 
+			//player movement
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 			{
 				player.MovePlayer(-playerSpeed * deltaTime, 0);
@@ -75,8 +75,7 @@ void Game::Snake(Game game)
 				player.MovePlayer(0, playerSpeed * deltaTime);
 			}
 
-			//time = clock.getElapsedTime();
-
+			//checks if any of the items have touched the player and removes them
 			for (int i = 0; i < item.size(); i++)
 			{
 				if (item.at(i).getItem().getGlobalBounds().intersects(player.getPlayer().getGlobalBounds()))
@@ -85,11 +84,11 @@ void Game::Snake(Game game)
 					break;
 				}
 			}
-
-
+			//updates deltaTime
 			lastTime = currTime;
 		}
 
+		//updates the draw
 		window.clear();
 		for (int i = 0; i < item.size(); i++)
 		{

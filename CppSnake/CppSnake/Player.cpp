@@ -12,7 +12,7 @@ Player::~Player()
 
 void Player::setSizePlayer(float aSize)
 {
-
+	//basic setup of the player
 	shape.setRadius(aSize);
 	shape.setFillColor(sf::Color::Green);
 }

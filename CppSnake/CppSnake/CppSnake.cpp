@@ -9,8 +9,11 @@
 
 int main()
 {
+	//Instantiates a game class and launches the game
 	Game game;
 	game.Snake(game);
 
 	return 0;
+
+	//TODO: Get multiple items on the field and make them respawn when all are removed
 }

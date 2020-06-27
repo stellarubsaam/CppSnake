@@ -22,6 +22,7 @@ public:
 private:
 	float deltaTime;
 	Player player;
+	//array of items
 	std::vector<Item> item;
 };
 
