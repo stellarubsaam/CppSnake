@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "Item.h"
 
-Item::Item()
+Item::Item(float aRandomNumber, float anotherRandomNumber)
 {
 	shape.setRadius(15.);
 	shape.setFillColor(sf::Color::Red);
 
-	shape.setPosition(300, 300);
+	shape.setPosition(aRandomNumber, anotherRandomNumber);
 }
 
 Item::~Item()

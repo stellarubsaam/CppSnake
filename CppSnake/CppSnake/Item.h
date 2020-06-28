@@ -4,7 +4,7 @@
 class Item
 {
 public:
-	Item();
+	Item(float aRandomNumber, float anotherRandomNumber);
 	~Item();
 
 	sf::CircleShape getItem();

@@ -21,6 +21,7 @@ void Game::Snake(Game game)
 	sf::Clock clock = {};
 	float lastTime = 0.0f;
 	float currTime = 0.0f;
+	float randomNumber = 0;
 
 #pragma endregion
 
@@ -33,7 +34,7 @@ void Game::Snake(Game game)
 	//set's the amount of items on the field
 	for (int i = 0; i < 1; i++)
 	{
-		item.push_back(Item());
+		item.push_back(Item(randomNumber, randomNumber));
 	}
 
 	//Update function - global
@@ -43,6 +44,7 @@ void Game::Snake(Game game)
 		time = clock.getElapsedTime();
 		currTime = clock.getElapsedTime().asSeconds();
 		deltaTime = currTime - lastTime;
+		randomNumber = rand() % 800;
 
 		//delta time implementation, forces the game to run at 60fps
 		if (currTime - lastTime >= 1.0f / 60.0f)
@@ -81,6 +83,7 @@ void Game::Snake(Game game)
 				if (item.at(i).getItem().getGlobalBounds().intersects(player.getPlayer().getGlobalBounds()))
 				{
 					item.erase(item.begin() + i);
+					item.push_back(Item(randomNumber, randomNumber));
 					break;
 				}
 			}
