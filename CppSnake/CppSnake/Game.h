@@ -24,5 +24,10 @@ private:
 	Player player;
 	//array of items
 	std::vector<Item> item;
+	sf::Time time = {};
+	sf::Clock clock = {};
+	float lastTime = 0.0f;
+	float currTime = 0.0f;
+	float randomNumber = 0;
 };
 

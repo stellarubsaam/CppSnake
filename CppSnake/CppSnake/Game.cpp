@@ -15,16 +15,6 @@ void Game::Snake(Game game)
 	//gameplay window
 	sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works... for now...");
 
-#pragma region To_calculate_deltaTime_because_SFML_doesnt_have_it_build-in
-
-	sf::Time time = {};
-	sf::Clock clock = {};
-	float lastTime = 0.0f;
-	float currTime = 0.0f;
-	float randomNumber = 0;
-
-#pragma endregion
-
 	//speed of the player
 	int playerSpeed = 150;
 
